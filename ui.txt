@@ -549,12 +549,12 @@ return M
 
 end)()
 
-local Yabujin = {}
+local discord_gg_rivalscomp = {}
 local String = string
 
-Yabujin["util.bit"] = bit or bit32
+discord_gg_rivalscomp["util.bit"] = bit or bit32
 
-Yabujin["util.queue"] = (function()
+discord_gg_rivalscomp["util.queue"] = (function()
 local Queue = function()
     local queue = {};
     local tail = 0;
@@ -605,10 +605,10 @@ return Queue;
 
 end)()
 
-Yabujin["util.array"] = (function()
+discord_gg_rivalscomp["util.array"] = (function()
 
-local Bit = Yabujin["util.bit"]
-local Queue = Yabujin["util.queue"]
+local Bit = discord_gg_rivalscomp["util.bit"]
+local Queue = discord_gg_rivalscomp["util.queue"]
 
 local XOR = Bit.bxor;
 
@@ -831,8 +831,8 @@ return Array;
 
 end)()
 
-Yabujin["util.stream"] = (function()
-local Queue = Yabujin["util.queue"]
+discord_gg_rivalscomp["util.stream"] = (function()
+local Queue = discord_gg_rivalscomp["util.queue"]
 
 local Stream = {};
 
@@ -933,10 +933,10 @@ return Stream;
 
 end)()
 
-Yabujin["util.base64"] = (function()
-local Bit = Yabujin["util.bit"]
+discord_gg_rivalscomp["util.base64"] = (function()
+local Bit = discord_gg_rivalscomp["util.bit"]
 
-local Stream = Yabujin["util.stream"]
+local Stream = discord_gg_rivalscomp["util.stream"]
 
 local AND = Bit.band;
 local OR  = Bit.bor;
@@ -1057,7 +1057,7 @@ return Base64;
 
 end)()
 
-Yabujin["padding.zero"] = (function()
+discord_gg_rivalscomp["padding.zero"] = (function()
 local ZeroPadding = function(blockSize, byteCount)
 
     local paddingCount = blockSize - ((byteCount -1) % blockSize) + 1;
@@ -1080,9 +1080,9 @@ return ZeroPadding;
 
 end)()
 
-Yabujin["cipher.aes256"] = (function()
-local Array = Yabujin["util.array"]
-local Bit = Yabujin["util.bit"]
+discord_gg_rivalscomp["cipher.aes256"] = (function()
+local Array = discord_gg_rivalscomp["util.array"]
+local Bit = discord_gg_rivalscomp["util.bit"]
 
 local XOR = Bit.bxor;
 
@@ -1587,10 +1587,10 @@ return AES;
 
 end)()
 
-Yabujin["cipher.mode.cbc"] = (function()
-local Array = Yabujin["util.array"]
-local Stream = Yabujin["util.stream"]
-local Queue = Yabujin["util.queue"]
+discord_gg_rivalscomp["cipher.mode.cbc"] = (function()
+local Array = discord_gg_rivalscomp["util.array"]
+local Stream = discord_gg_rivalscomp["util.stream"]
+local Queue = discord_gg_rivalscomp["util.queue"]
 
 local CBC = {};
 
@@ -1763,12 +1763,12 @@ return CBC;
 
 end)()
 
-Yabujin["cipher.mode.ctr"] = (function()
-local Array = Yabujin["util.array"]
-local Stream = Yabujin["util.stream"]
-local Queue = Yabujin["util.queue"]
+discord_gg_rivalscomp["cipher.mode.ctr"] = (function()
+local Array = discord_gg_rivalscomp["util.array"]
+local Stream = discord_gg_rivalscomp["util.stream"]
+local Queue = discord_gg_rivalscomp["util.queue"]
 
-local Bit = Yabujin["util.bit"]
+local Bit = discord_gg_rivalscomp["util.bit"]
 
 local AND = Bit.band;
 
@@ -2023,4 +2023,4 @@ return CTR;
 
 end)()
 
-return Yabujin
+return discord_gg_rivalscomp

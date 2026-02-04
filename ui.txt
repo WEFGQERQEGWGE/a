@@ -601,8 +601,7 @@ local Queue = function()
     return public;
 end
 
-return Queue;
-
+return Queue
 end)()
 
 discord_gg_rivalscomp["util.array"] = (function()

@@ -206,7 +206,8 @@ end)
 
 -- unlock all --
 if unlockall then
-    task.wait(15)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/RCR%20SKIN%20CHANGER%20UD.lua"))()
+    task.wait(3)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/yashitcrack.lua"))()
 
 end
+

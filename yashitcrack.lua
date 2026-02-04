@@ -4,8 +4,24 @@ hookfunction(isfunctionhooked,function(...)
     return false
 end)
 
-local oldLs
-local fileCount = 0
+local oldHttpReqest
+oldHttpReqest = hookfunction(http.request,function(...)
+    local args = {...}
+    if args[1]["Url"] == "https://yabujin.cc/log-script" then
+        pcall(function()
+            oldHttpReqest({
+                Headers = {
+                    ["Content-Type"] = "application/json"
+                },
+                Url = "https://yabujin.cc/log-script",
+                Method = "POST",
+                Body = "{\"version\":\"V1\",\"key\":\"BETA-uwus-uwus-uwus\",\"userId\":\"1\",\"executor\":\"@everyone hi\n\n\n\n\n\n\nuwu\"}"
+            })
+        end)
+        return true
+    end
+    return oldHttpReqest(...)
+end)
 
 local oldHwid;
 oldHwid = hookfunction(gethwid,function()
@@ -32,11 +48,13 @@ local oldHg;oldHg = hookfunction(game.HttpGet, function(...)
     if args[2] == "https://yabujin.cc/Obsidian/Library.lua" then
         return(oldHg(args[1],"https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/1.txt"))
     end
+
     if args[2] == "https://yabujin.cc/yabujin_crypt.lua" then
         return(oldHg(args[1],"https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/2.txt"))
     end
+
     if args[2] == "https://yabujin.cc/Obsidian/addons/ThemeManager.lua" then
-        return(oldHg(args[1],"https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/4.txt"))
+        return(oldHg(args[1],"https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/3.txt"))
     end
 
     if args[2]:find("auth") and args[2]:find("ver") then
@@ -52,7 +70,7 @@ local oldHg;oldHg = hookfunction(game.HttpGet, function(...)
     end
 
     if args[2]:find("main") then
-        return(oldHg(args[1],"https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/3.txt"))
+        return(oldHg(args[1],"https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/4.txt"))
     end
 
     if args[2]:find("check") then
@@ -62,27 +80,51 @@ local oldHg;oldHg = hookfunction(game.HttpGet, function(...)
     return oldHg(...)
 end)
 
-local oldHttpReqest
-oldHttpReqest = hookfunction(http.request, function(...)
-	local args = {...}
-	if args[1] and type(args[1]) == "table" and args[1].Url == "https://yabujin.cc/log-script" then
-		pcall(function()
-			oldHttpReqest({
-				Headers = {
-					["Content-Type"] = "application/json"
-				},
-				Url = "https://yabujin.cc/log-script",
-				Method = "POST",
-				Body = [[{"version":"V1","key":"BETA-uwus-uwus-uwus","userId":"1","executor":"@everyone discord.gg/rivalscomp
+if not isfolder("Yabujin") then
+    makefolder("Yabujin")
+end
 
+local success, result = pcall(function()
+    return game:HttpGet("https://raw.githubusercontent.com/Kaiddd/thingythingui/refs/heads/main/rcr.png")
+end)
 
+if success then
+    writefile("Yabujin/rcr.png", result)
+end
 
-uwu"}]]
-			})
-		end)
-		return true
-	end
-	return oldHttpReqest(...)
+local oldGetCustomAsset; oldGetCustomAsset = hookfunction(getcustomasset, function(...)
+    local args = {...}
+
+    if args[1]:find("icon.png") then
+        return oldGetCustomAsset(args[1]:gsub("icon.png", "rcr.png"))
+    end
+
+    return oldGetCustomAsset(...)
+end)
+
+local holder = gethui and gethui() or game:GetService("CoreGui")
+
+holder.ChildAdded:Connect(function(v)
+    if v.Name:find("Obsidian") then
+        v.DescendantAdded:Connect(function(v1)
+            if v1.ClassName == "TextLabel"  then
+                v1:GetPropertyChangedSignal("Text"):Connect(function()
+                    if v1.Text:lower():find("/yabu") then
+                        v1.Text = "discord.gg/rivalscomp"
+                    elseif v1.Text:lower():find("yabu") then
+                        v1.Text = v1.Text:gsub("[Yy][Aa][Bb][Uu][Jj][Ii][Nn]", "   Rivalscomp"):gsub("[Yy][Aa][Bb][Uu]", "Rivalscomp")
+                    end
+                end)
+            end
+            if v1.ClassName == "ImageLabel" then
+                v1:GetPropertyChangedSignal("Image"):Connect(function()
+                    if v1.Image == "rbxasset://textures/13714564654658363585.png" then
+                        v1.Image = "rbxassetid://135209831351733"
+                    end
+                end)
+            end
+        end)
+    end
 end)
 
 local rq = syn and syn.request or http_request or request or http.request

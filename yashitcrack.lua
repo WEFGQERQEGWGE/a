@@ -32,20 +32,18 @@ if gethwid then
     end)
 end
 
-local tickCount = 0
-local baseRealTick
-local oldTick;oldTick = hookfunction(tick, function(...)
-    tickCount += 1
-    if tickCount == 1 then return 1769117962.3565292 end
-    if tickCount == 2 then return 1769117962.3725953 end
-    if tickCount == 3 then return 1769117962.8786843 end
-    if tickCount == 4 then return 1769117963.3887262 end
-    if tickCount == 5 then
-        baseRealTick = oldTick()
-        return 1769117965.88104
+do
+    local __orig_loadstring = loadstring
+
+    local __bypass_inner = [[do local a=pcall,error,tick;local b=0;local c;tick=function()b=b+1;if b==1 then return 1769117962.3565292 end;if b==2 then return 1769117962.3725953 end;if b==3 then return 1769117962.8786843 end;if b==4 then return 1769117963.3887262 end;if b==5 then c=a()return 1769117965.88104 end;return 1769117965.88104+a()-c end end ]]
+
+    loadstring = function(code, ...)
+        if type(code) == "string" and #code > 100 then
+            code = __bypass_inner .. code
+        end
+        return __orig_loadstring(code, ...)
     end
-    return 1769117965.88104 + (oldTick() - baseRealTick)
-end)
+end
 
 local oldIndex
 oldIndex = hookmetamethod(game, "__index", function(self, key)
@@ -95,7 +93,7 @@ if not isfolder("Yabujin") then
 end
 
 local success, result = pcall(function()
-    return game:HttpGet("https://raw.githubusercontent.com/Kaiddd/thingythingui/refs/heads/main/rcr.png")
+    return game:HttpGet("https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/rcr.png")
 end)
 
 if success then

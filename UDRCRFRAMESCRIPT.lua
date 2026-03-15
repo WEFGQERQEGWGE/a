@@ -55,8 +55,8 @@ friend.Character.Name = decodedData.name
 friend.Character.Humanoid.DisplayName = decodedData.displayName
 Players:WaitForChild(decodedData.name):SetAttribute("Level", tonumber(level))
 Players:WaitForChild(decodedData.name):SetAttribute("StatisticDuelsWinStreak", tonumber(streak))
-Players:WaitForChild(decodedData.name):WaitForChild("leaderstats").Level.Value = tonumber(level)
-Players:WaitForChild(decodedData.name):WaitForChild("leaderstats"):FindFirstChild("Win Streak").Value = tonumber(streak)
+Players:WaitForChild(decodedData.name):WaitForChild("CustomLeaderstats").Level.Value = tonumber(level)
+Players:WaitForChild(decodedData.name):WaitForChild("CustomLeaderstats"):FindFirstChild("Win Streak").Value = tonumber(streak)
 if tonumber(elo) > 0 then
 	Players:WaitForChild(decodedData.name):SetAttribute("DisplayELO", tonumber(elo))
 end

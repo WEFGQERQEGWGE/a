@@ -78,8 +78,8 @@ function Char()
 		end
 	end
 	if appearance:FindFirstChild("face") then
-		plr.Character:WaitForChild("Head").face:Destroy()
-		appearance.face.Parent = plr.Character.Head
+		--plr.Character:WaitForChild("Head").face:Destroy()
+		--appearance.face.Parent = plr.Character.Head
 	else
 		plr.Character:WaitForChild("Head").face:Destroy()
 		local face = Instance.new("Decal")

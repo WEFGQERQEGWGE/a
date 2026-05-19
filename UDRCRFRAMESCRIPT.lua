@@ -58,18 +58,7 @@ function Char()
 			plr.Character.Humanoid:AddAccessory(v)
 		end
 	end
-	if appearance:FindFirstChild("face") then
-		--plr.Character:WaitForChild("Head").face:Destroy()
-		--appearance.face.Parent = plr.Character.Head
-	else
-		plr.Character:WaitForChild("Head").face:Destroy()
-		local face = Instance.new("Decal")
-		face.Face = "Front"
-		face.Name = "face"
-		face.Texture = "rbxasset://textures/face.png"
-		face.Transparency = 0
-		face.Parent = plr.Character.Head
-	end
+
 	local parent = plr.Character.Parent
 	plr.Character.Parent = nil
 	plr.Character.Parent = parent
@@ -191,4 +180,3 @@ if unlockall then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/yashitcrack.lua"))()
 
 end
-

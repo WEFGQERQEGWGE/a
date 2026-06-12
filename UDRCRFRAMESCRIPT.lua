@@ -18,8 +18,8 @@ local Players = game:GetService("Players")
 local friend = cfg.helper ~= "" and Players:WaitForChild(helper) or Players.LocalPlayer
 
 -- check for watermark --
-if join ~= "discord.gg/rivalscomp" then
-    Players.LocalPlayer:Kick("don't remove the discord.gg/rivalscomp watermark please")
+if join ~= "discord.gg/rivalsc" then
+    Players.LocalPlayer:Kick("don't remove the discord.gg/rivalsc watermark please")
     return
 end
 

@@ -193,10 +193,3 @@ game:GetService("RunService").RenderStepped:Connect(function()
 		end
 	end
 end)
-
--- unlock all --
-if unlockall then
-    task.wait(3)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/WEFGQERQEGWGE/a/refs/heads/main/yashitcrack.lua"))()
-
-end
